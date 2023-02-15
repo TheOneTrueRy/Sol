@@ -14,6 +14,7 @@ export class GalaxyController extends BaseController{
     try {
       const galaxyData = req.body
       const galaxy = await galaxyService.createGalaxy(galaxyData)
+      res.send(galaxy)
     } catch (error) {
       next(error)
     }
