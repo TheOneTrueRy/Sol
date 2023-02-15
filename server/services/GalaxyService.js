@@ -3,15 +3,19 @@ import { BadRequest } from "../utils/Errors.js";
 
 
 class GalaxyService{
+  async createGalaxy(galaxyData) {
+  const galaxy = await dbContext.Galaxies.create(galaxyData)
+  return galaxy
+  }
   async getGalaxy(galaxyId) {
-    const galaxy = dbContext.Galaxies.findById(galaxyId)
+    const galaxy = await dbContext.Galaxies.findById(galaxyId)
     if(!galaxy){
       throw new BadRequest('No galaxy with that ID!')
     }
     return galaxy
   }
   async getAllGalaxies() {
-    const galaxies = dbContext.Galaxies.find()
+    const galaxies = await dbContext.Galaxies.find()
     return galaxies
   }
 

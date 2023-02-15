@@ -8,6 +8,15 @@ export class GalaxyController extends BaseController{
     this.router
     .get('', this.getAllGalaxies)
     .get('/:galaxyId', this.getGalaxy)
+    .post('', this.createGalaxy)
+  }
+  async createGalaxy(req, res, next) {
+    try {
+      const galaxyData = req.body
+      const galaxy = await galaxyService.createGalaxy(galaxyData)
+    } catch (error) {
+      next(error)
+    }
   }
   async getGalaxy(req, res, next) {
   try {
