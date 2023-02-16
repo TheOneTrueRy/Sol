@@ -20,10 +20,10 @@ export class GalaxyController extends BaseController{
   async getColoniesOnPlanet(req, res, next) {
     try {
       const planetId = req.params.planetId
-      const colonies = coloniesService.getColoniesOnPlanet(planetId)
+      const colonies = await coloniesService.getColoniesOnPlanet(planetId)
       res.send(colonies)
     } catch (error) {
-      
+      next(error)
     }
   }
   async getPlanet(req, res, next) {

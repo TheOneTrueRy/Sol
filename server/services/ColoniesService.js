@@ -8,6 +8,7 @@ class ColoniesService{
     if(!colonies){
       throw new BadRequest('Bad Planet ID!')
     }
+    return colonies
   }
   async createColony(colonyData) {
     const colony = await dbContext.Colonies.create(colonyData)

@@ -13,7 +13,7 @@ export class PlanetsController extends BaseController{
   async getSpecies(req, res, next) {
     try{
       const planetId = req.params.planetId
-      const species = speciesService.getSpecies(planetId)
+      const species = await speciesService.getSpecies(planetId)
       res.send(species)
     } catch (error){
       next(error)
