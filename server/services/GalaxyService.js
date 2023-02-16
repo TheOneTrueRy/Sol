@@ -5,6 +5,9 @@ import { BadRequest } from "../utils/Errors.js";
 class GalaxyService{
   async createGalaxy(galaxyData) {
   const galaxy = await dbContext.Galaxies.create(galaxyData)
+  if(!galaxy){
+    throw new BadRequest('Invalid Galaxy Data!')
+  }
   return galaxy
   }
   async getGalaxy(galaxyId) {

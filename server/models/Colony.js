@@ -6,8 +6,8 @@ export const ColonySchema = new Schema(
   {
     name: {type: String, required: true},
     population: {type: Number, required: true},
-    planetId: {type: ObjectId, ref: 'Planet'},
-    speciesId: {type: ObjectId, ref: 'Species'}
+    planetId: {type: ObjectId, required: true, ref: 'Planet'},
+    speciesId: {type: ObjectId, required: true, ref: 'Species'}
   },
   { timestamps: true, toJSON: { virtuals: true } }
 )
