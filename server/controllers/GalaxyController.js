@@ -14,17 +14,6 @@ export class GalaxyController extends BaseController{
     .post('', this.createGalaxy)
     .get('/:galaxyId/planets', this.getPlanetsByGalaxy)
     .get('/:galaxyId/planets/:planetId/', this.getPlanet)
-    .get('/:galaxyId/planets/:planetId/colonies', this.getColoniesOnPlanet)
-    .get('/:galaxyId/planets/:planetId/colonies/:colonyId', this.getColoniesOnPlanet)
-  }
-  async getColoniesOnPlanet(req, res, next) {
-    try {
-      const planetId = req.params.planetId
-      const colonies = await coloniesService.getColoniesOnPlanet(planetId)
-      res.send(colonies)
-    } catch (error) {
-      next(error)
-    }
   }
   async getPlanet(req, res, next) {
     try {
