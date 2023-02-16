@@ -8,12 +8,17 @@ export class PlanetsController extends BaseController{
     super('api/galaxies')
     this.router
     .post('/:galaxyId/planets', this.createPlanet)
-    .get('/:galacyId/planets/:planetId/species', this.getSpecies)
+    .get('/:galaxyId/planets/:planetId/species', this.getSpecies)
   }
   async getSpecies(req, res, next) {
-    const planetId = req.params.planetId
-    const species = speciesService.getSpecies(planetId)
-    res.send(species)
+    try{
+      const planetId = req.params.planetId
+      const species = speciesService.getSpecies(planetId)
+      res.send(species)
+    } catch (error){
+      next(error)
+    }
+
   }
   async createPlanet(req, res, next) {
     try {

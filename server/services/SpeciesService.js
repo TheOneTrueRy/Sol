@@ -8,6 +8,7 @@ class SpeciesService{
     if(!species){
       throw new BadRequest('Bad Species Data!')
     }
+    return species
   }
 
   async getSpecies(planetId){

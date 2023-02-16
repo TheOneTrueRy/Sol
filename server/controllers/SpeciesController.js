@@ -12,6 +12,7 @@ export class SpeciesController extends BaseController{
     try {
       const speciesData = req.body
       const species = await speciesService.createSpecies(speciesData)
+      res.send(species)
     } catch (error) {
       next(error)
     }
