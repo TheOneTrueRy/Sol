@@ -4,6 +4,7 @@ import { GalaxySchema } from "../models/Galaxy.js"
 import { ValueSchema } from '../models/Value'
 import { PlanetSchema } from '../models/Planet.js'
 import { ColonySchema } from "../models/Colony.js"
+import { SpeciesSchema } from "../models/Species.js"
 
 class DbContext {
   Values = mongoose.model('Value', ValueSchema);
@@ -11,6 +12,7 @@ class DbContext {
   Galaxies = mongoose.model('Galaxy', GalaxySchema);
   Planets = mongoose.model('Planet', PlanetSchema)
   Colonies = mongoose.model('Colony', ColonySchema)
+  Species = mongoose.model('Species', SpeciesSchema)
 }
 
 export const dbContext = new DbContext()

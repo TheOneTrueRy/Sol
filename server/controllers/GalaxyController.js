@@ -1,3 +1,5 @@
+import { dbContext } from "../db/DbContext.js";
+import { coloniesService } from "../services/ColoniesService.js";
 import { galaxyService } from "../services/GalaxyService.js";
 import { planetsService } from "../services/PlanetsService.js";
 import BaseController from "../utils/BaseController.js";
@@ -12,6 +14,17 @@ export class GalaxyController extends BaseController{
     .post('', this.createGalaxy)
     .get('/:galaxyId/planets', this.getPlanetsByGalaxy)
     .get('/:galaxyId/planets/:planetId/', this.getPlanet)
+    .get('/:galaxyId/planets/:planetId/colonies', this.getColoniesOnPlanet)
+    .get('/:galaxyId/planets/:planetId/colonies/:colonyId', this.getColoniesOnPlanet)
+  }
+  async getColoniesOnPlanet(req, res, next) {
+    try {
+      const planetId = req.params.planetId
+      const colonies = coloniesService.getColoniesOnPlanet(planetId)
+      res.send(colonies)
+    } catch (error) {
+      
+    }
   }
   async getPlanet(req, res, next) {
     try {
